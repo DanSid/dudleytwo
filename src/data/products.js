@@ -75,6 +75,7 @@ export const products = [
       '/assets/Dudleys Shampoo & Conditioner NEW.png',
     ],
     detailImage: '/assets/redesign/peppermint-duo-alt.png',
+    detailVideo: '/assets/Dudly\'s Peppermint Shampoo And Conditioner.mp4',
     video: '/assets/DUDLEYS_Peppermint_Soothe_Shampoo_&_Conditioner_Motion.mp4',
     badge: 'Wash-day favorite',
     notes: ['Cooling sensation', 'Fresh routine', 'Balanced cleanse + condition'],
