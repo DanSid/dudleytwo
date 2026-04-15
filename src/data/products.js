@@ -31,6 +31,7 @@ export const products = [
       '/assets/redesign/Rectangle 3.png',
     ],
     detailImage: '/assets/Dudleys PCA.png',
+    detailImage2: '/assets/Dudleys PCA NEW.png',
     video: '/assets/redesign/PCA Motion 2.mp4',
     badge: 'Daily hydration',
     notes: ['Weightless feel', 'Polished finish', 'Made for daily styling'],

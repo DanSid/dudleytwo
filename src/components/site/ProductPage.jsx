@@ -190,48 +190,61 @@ export default function ProductPage({ product }) {
         </div>
       </section>
 
-      <section id="description" className="bg-white py-16 md:py-20">
+<section id="description" className="bg-white py-16 md:py-20">
   <div className="mx-auto max-w-7xl px-5 md:px-8">
     <div className="rounded-[32px] border border-black/5 bg-[#f8f6f2] p-8 md:p-10">
       <p className="eyebrow-light">Product Details</p>
       <h2 className="mt-3 font-display text-4xl text-[#121828]">Detailed look at craftsmanship and design.</h2>
       
-      {/* Container for both image and video */}
-      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-        {product.detailImage && (
+      {/* Container for images and video */}
+      <div className="mt-8">
+        {/* Grid layout for multiple media elements */}
+        {(product.detailImage || product.detailImage2 || product.detailVideo) ? (
+          <div className={`grid gap-6 ${product.detailImage && (product.detailImage2 || product.detailVideo) ? 'md:grid-cols-2' : 'place-items-center'}`}>
+            {product.detailImage && (
+              <div className="flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
+                <img 
+                  src={product.detailImage} 
+                  alt={`${product.name} detailed view`} 
+                  className="w-full max-h-[600px] rounded-[20px] object-contain" 
+                />
+              </div>
+            )}
+            
+            {product.detailImage2 && (
+              <div className="flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
+                <img 
+                  src={product.detailImage2} 
+                  alt={`${product.name} detailed view 2`} 
+                  className="w-full max-h-[600px] rounded-[20px] object-contain" 
+                />
+              </div>
+            )}
+            
+            {product.detailVideo && (
+              <div className="flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
+                <video 
+                  src={product.detailVideo} 
+                  autoPlay 
+                  muted 
+                  loop 
+                  playsInline 
+                  className="w-full max-h-[600px] rounded-[20px] object-contain"
+                />
+              </div>
+            )}
+          </div>
+        ) : (
+          // Fallback if no detail media is available
           <div className="flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
             <img 
-              src={product.detailImage} 
+              src={product.gallery[product.gallery.length - 1]} 
               alt={`${product.name} detailed view`} 
               className="w-full max-h-[600px] rounded-[20px] object-contain" 
             />
           </div>
         )}
-        
-        {product.detailVideo && (
-          <div className="flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
-            <video 
-              src={product.detailVideo} 
-              autoPlay 
-              muted 
-              loop 
-              playsInline 
-              className="w-full max-h-[600px] rounded-[20px] object-contain"
-            />
-          </div>
-        )}
       </div>
-      
-      {/* Fallback if only gallery image is available */}
-      {!product.detailImage && !product.detailVideo && (
-        <div className="mt-8 flex h-full items-center justify-center rounded-[24px] bg-[#f9f9fc] p-6">
-          <img 
-            src={product.gallery[product.gallery.length - 1]} 
-            alt={`${product.name} detailed view`} 
-            className="w-full max-h-[600px] rounded-[20px] object-contain" 
-          />
-        </div>
-      )}
     </div>
   </div>
 </section>
